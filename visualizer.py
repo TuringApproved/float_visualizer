@@ -1,7 +1,6 @@
 import numpy as np
 import itertools as it
 import copy
-from time import sleep
 
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Button, Slider
@@ -344,7 +343,7 @@ def plotting_funct(exp_bits, mant_bits, x_center, zoom):
 
     for exponent_list in norm_repr_r["p_floats"]:
         main_plot.plot(exponent_list, [0]*len(exponent_list), linestyle="", marker="|", ms=20, mew=3)
-    norm_fp_text = main_plot.text(0, -0.7, "normalized floating point", size=20, 
+    norm_fp_text = main_plot.text(0, -0.7, "normalized floating point", size=20,
                                   horizontalalignment='center')
 
     x_min = np.min(norm_repr_r["p_floats"])  # minimum representable real
@@ -354,10 +353,10 @@ def plotting_funct(exp_bits, mant_bits, x_center, zoom):
     x_min -= x_range/10
     x_max += x_range/10
     main_plot.axis([x_min*(1-zoom) - x_center*x_min, x_max*(1-zoom) + x_center*x_max, -0.8, 0.6])
-    
+
     if not do_sum:
         for d_exponent_list in denorm_repr_r["p_floats"]:
-            main_plot.plot(d_exponent_list, [0.5]*len(d_exponent_list), 
+            main_plot.plot(d_exponent_list, [0.5]*len(d_exponent_list),
                            linestyle="", marker="|", ms=20, mew=3)
         main_plot.text(0, 0.3, "denormalized floating point", size=20, horizontalalignment='center')
 
@@ -384,7 +383,7 @@ def plotting_funct(exp_bits, mant_bits, x_center, zoom):
                            arrowprops=dict(facecolor='black', shrink=0.05))
 
         main_plot.annotate("Actual sum: {}".format(actual_sum), size=20, horizontalalignment="center",
-                           xy=(actual_sum, 0), xytext=(actual_sum, 0.4), 
+                           xy=(actual_sum, 0), xytext=(actual_sum, 0.4),
                            arrowprops=dict(facecolor='black', shrink=0.05))
         main_plot.annotate("Representable sum: {}".format(repr_sum), size=20, horizontalalignment="center",
                            xy=(repr_sum, 0), xytext=(repr_sum, -0.4),
